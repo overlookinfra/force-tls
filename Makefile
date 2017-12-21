@@ -7,7 +7,7 @@ CONTAINER_TAG = latest
 compile : build/force-tls
 
 build/force-tls : force-tls.go
-	GOOS=linux go build $(GO_ARGS) -o build/force-tls ./force-tls.go
+	CGO_ENABLED=0 GOOS=linux go build $(GO_ARGS) -o build/force-tls ./force-tls.go
 
 .PHONY : container
 container : build/force-tls
